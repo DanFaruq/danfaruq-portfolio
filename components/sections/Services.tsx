@@ -1,3 +1,5 @@
+"use client"
+
 import { FadeIn } from "@/components/ui/FadeIn"
 import { SectionLabel } from "@/components/ui/SectionLabel"
 import { SERVICES } from "@/lib/data"
