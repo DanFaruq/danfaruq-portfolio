@@ -118,31 +118,28 @@ export function Hero() {
         </a>
       </div>
 
-      {/* Stats strip */}
+      {/* Stats strip — 2×2 on mobile, 4-col on sm+ */}
       <div
-        className="flex flex-wrap border rounded-xl mt-10 overflow-hidden"
+        className="grid grid-cols-2 sm:grid-cols-4 border rounded-xl mt-10 overflow-hidden w-full max-w-[480px]"
         style={{ background: "var(--bg2)", borderColor: "var(--border)" }}
       >
-        {STATS.map((s, i) => (
-          <div
-            key={s.l}
-            className="flex-1 min-w-[110px] px-5 py-4 text-center"
-            style={{ borderRight: i < STATS.length - 1 ? "1px solid var(--border)" : "none" }}
-          >
-            <div
-              className="font-black tracking-tight"
-              style={{ fontSize: 22, fontFamily: "var(--mono)", color: "var(--text)" }}
-            >
-              {s.n}
-            </div>
-            <div
-              className="text-[9px] font-semibold uppercase tracking-[0.5px] mt-[2px]"
-              style={{ color: "var(--text3)" }}
-            >
-              {s.l}
-            </div>
-          </div>
-        ))}
+        {/* col borders via child divs */}
+        <div className="px-4 py-4 text-center" style={{ borderRight: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
+          <div className="font-black" style={{ fontSize: "clamp(18px,4vw,22px)", fontFamily: "var(--mono)", color: "var(--text)" }}>1+</div>
+          <div className="text-[9px] font-semibold uppercase tracking-[0.5px] mt-[2px]" style={{ color: "var(--text3)" }}>Live clients</div>
+        </div>
+        <div className="px-4 py-4 text-center" style={{ borderBottom: "1px solid var(--border)" }}>
+          <div className="font-black" style={{ fontSize: "clamp(18px,4vw,22px)", fontFamily: "var(--mono)", color: "var(--text)" }}>4wk</div>
+          <div className="text-[9px] font-semibold uppercase tracking-[0.5px] mt-[2px]" style={{ color: "var(--text3)" }}>Avg delivery</div>
+        </div>
+        <div className="px-4 py-4 text-center sm:border-t-0" style={{ borderRight: "1px solid var(--border)" }}>
+          <div className="font-black" style={{ fontSize: "clamp(18px,4vw,22px)", fontFamily: "var(--mono)", color: "var(--text)" }}>100%</div>
+          <div className="text-[9px] font-semibold uppercase tracking-[0.5px] mt-[2px]" style={{ color: "var(--text3)" }}>Ships to prod</div>
+        </div>
+        <div className="px-4 py-4 text-center">
+          <div className="font-black" style={{ fontSize: "clamp(18px,4vw,22px)", fontFamily: "var(--mono)", color: "var(--text)" }}>remote</div>
+          <div className="text-[9px] font-semibold uppercase tracking-[0.5px] mt-[2px]" style={{ color: "var(--text3)" }}>Works globally</div>
+        </div>
       </div>
 
       {/* Scroll hint */}

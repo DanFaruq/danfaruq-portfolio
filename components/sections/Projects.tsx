@@ -1,5 +1,7 @@
 "use client"
 
+import { useState, useEffect } from "react"
+import { useTheme } from "next-themes"
 import { FadeIn } from "@/components/ui/FadeIn"
 import { SectionLabel } from "@/components/ui/SectionLabel"
 import { AppMockup } from "@/components/case-study/AppMockup"
@@ -7,6 +9,11 @@ import { TabPanel } from "@/components/case-study/TabPanel"
 import { Walkthrough } from "@/components/case-study/Walkthrough"
 
 export function Projects() {
+  const { theme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+  const isDark = mounted && theme === "dark"
+
   return (
     <section id="work" className="py-20 px-6 max-w-[960px] mx-auto relative z-[1]">
       <FadeIn>
@@ -60,9 +67,9 @@ export function Projects() {
               personal dashboard for every team member.
             </p>
 
-            {/* Terminal block — dark mode via data-theme attribute check at runtime */}
-            <div
-              className="rounded-[10px] p-5 mb-5 text-[12px] leading-[1.9] dark-only-term"
+            {/* Terminal block — dark mode only */}
+            {isDark && <div
+              className="rounded-[10px] p-5 mb-5 text-[12px] leading-[1.9]"
               style={{ background: "#080c12", border: "1px solid #21262d", fontFamily: "var(--mono)" }}
             >
               <div style={{ color: "#484f58" }}>{"// project.json"}</div>
@@ -72,7 +79,7 @@ export function Projects() {
               <div><span style={{ color: "#79c0ff" }}>shipped_in</span>{": "}<span style={{ color: "#f2cc60" }}>4</span><span style={{ color: "#484f58" }}>{" // weeks"}</span>,</div>
               <div><span style={{ color: "#79c0ff" }}>status</span>{": "}<span style={{ color: "#3fb950" }}>live</span>,</div>
               <div><span style={{ color: "#79c0ff" }}>impact</span>{": "}<span style={{ color: "#a5d6ff" }}>&quot;team fully off spreadsheets&quot;</span></div>
-            </div>
+            </div>}
 
             <TabPanel />
             <Walkthrough />

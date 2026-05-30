@@ -66,8 +66,8 @@ export function Contact() {
   return (
     <div
       id="contact"
-      className="relative overflow-hidden"
-      style={{ background: "var(--contact-bg, #080c12)", padding: "80px 48px" }}
+      className="relative overflow-hidden px-5 sm:px-12"
+      style={{ background: "var(--contact-bg, #080c12)", paddingTop: 80, paddingBottom: 80 }}
     >
       <div
         className="absolute pointer-events-none"
